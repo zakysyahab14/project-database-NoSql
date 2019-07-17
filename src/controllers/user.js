@@ -19,7 +19,29 @@ module.exports = {
           console.log(error);
         }
       },
-    
+      
+      login: async (req, res) => {
+        await User.findOne({ email: req.body.email, password: req.body.password })
+          .then(async data => {
+            if (data.password !== req.body.password) {
+              await res.send({
+                message: `Password Didn't Match!`
+              });
+            }
+            if (data.email && data.password) {
+              res
+                .status(200)
+                .send({ message: "you are logged in", loggedIn: true });
+            }
+          })
+          .catch(error => {
+            res.send({
+              message: `ups name and password doesn't match`,
+              loggedIn: false
+            });
+          });
+      }
+
       deleteUser: (req, res) => {
         try {
           User.remove({
