@@ -12,7 +12,7 @@ module.exports = {
     },
     createUser: (req, res) => {
         try {
-          User.create({ name: "Zaky", age: 25, address: "Bandung" })
+          User.create({ name: req.body.name, email: req.body.email, password: req.body.password })
             .then(data => res.send(data))
             .catch(error => res.send(error));
         } catch (error) {
