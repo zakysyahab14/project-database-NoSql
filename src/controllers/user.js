@@ -40,7 +40,7 @@ module.exports = {
               loggedIn: false
             });
           });
-      }
+      },
 
       deleteUser: (req, res) => {
         try {
