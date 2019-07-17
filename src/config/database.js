@@ -5,6 +5,7 @@ const MONGODB_CONNECTION = process.env.MONGODB_ATLAS || `mongodb://localhost/${p
 mongoose.connect(MONGODB_CONNECTION, {
     useNewUrlParser: true
 })
+
 .catch(error => {
     console.log("error brow")
 })
